@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use GuzzleHttp\Client as Client;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -32,5 +34,27 @@ class WelcomeController extends Controller {
 	{
 		return view('welcome');
 	}
+        
+        public function login(){
+            $data = \Input::all();
+            $client = new Client(['defaults' => [
+                'verify' => false
+            ]]);
+
+            $response = $client->post('http://192.168.1.147/login', [
+                'body' => [
+                    'username' => $data['username'],
+                    'password' => $data['password']
+                ]
+            ]);
+            
+            $r = $response->json();
+            
+            if($r['logged'] == false){
+                return view('welcome');
+            }else{
+                return view('home');
+            }
+        }
 
 }

@@ -11,11 +11,10 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', [
+    'as' => 'index', 'uses' => 'WelcomeController@index'
+]);
 
-Route::get('home', 'HomeController@index');
-
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+Route::post('login', [
+    'as' => 'login', 'uses' => 'WelcomeController@login'
 ]);
