@@ -37,7 +37,7 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">:*</div>
+				<div class="title">ko mi se uozbiljiooooo??</div>
 				<div class="quote">{{ Inspiring::quote() }}</div>
 			</div>
 		</div>
