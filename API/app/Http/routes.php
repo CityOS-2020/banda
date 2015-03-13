@@ -15,6 +15,15 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+
+/*
+ * login
+ */
+
+Route::post('login', 'AuthController@login');
+/*
+ * no time for this implementation because of tokens
+ */
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

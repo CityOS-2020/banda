@@ -1,7 +1,6 @@
 <html>
 	<head>
 		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
-
 		<style>
 			body {
 				margin: 0;
@@ -38,7 +37,7 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Laravel 5</div>
+				<div class="title">:*</div>
 				<div class="quote">{{ Inspiring::quote() }}</div>
 			</div>
 		</div>

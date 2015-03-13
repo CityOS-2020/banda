@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
+use App\User;
+
 class DatabaseSeeder extends Seeder {
 
 	/**
@@ -13,8 +15,15 @@ class DatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Model::unguard();
-
-		// $this->call('UserTableSeeder');
+                /*
+                 * user table
+                 */
+                DB::table('users')->delete();
+                User::create([
+                    'email' => 'nomail@mail.com',
+                    'name' => 'smartlight',
+                    'password' => Hash::make('justanotherpw')
+                    ]);
 	}
 
 }
