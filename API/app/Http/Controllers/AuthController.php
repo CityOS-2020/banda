@@ -10,6 +10,7 @@ class AuthController extends Controller {
 	public function login()
 	{
 		$data       = \Input::all();
+                
                 $username   = $data['username'];
                 $password   = $data['password'];
                  

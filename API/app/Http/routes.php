@@ -16,13 +16,22 @@ Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 
 
+
+/*
+ * graph data
+ */
+Route::get('/graphData1', [
+    'as' => 'graphData1', 'uses' => 'HomeController@sendGraphData1'
+]);
+
+
 /*
  * login
  */
 
 Route::post('login', 'AuthController@login');
 /*
- * no time for this implementation because of tokens
+ * no time for this implementation
  */
 Route::controllers([
 	'auth' => 'Auth\AuthController',
