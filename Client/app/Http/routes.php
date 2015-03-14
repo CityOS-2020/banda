@@ -15,6 +15,10 @@ Route::get('/', [
     'as' => 'index', 'uses' => 'WelcomeController@index'
 ]);
 
+Route::get('/graphData1', [
+    'as' => 'graphData1', 'uses' => 'HomeController@getGraphData1'
+]);
+
 Route::post('login', [
     'as' => 'login', 'uses' => 'WelcomeController@login'
 ]);

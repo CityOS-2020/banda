@@ -1,28 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use GuzzleHttp\Client as Client;
+
 class HomeController extends Controller {
-
-	/*
-	|--------------------------------------------------------------------------
-	| Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| This controller renders your application's "dashboard" for users that
-	| are authenticated. Of course, you are free to change or remove the
-	| controller as you wish. It is just here to get your app started!
-	|
-	*/
-
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
-
 	/**
 	 * Show the application dashboard to the user.
 	 *
@@ -32,5 +12,15 @@ class HomeController extends Controller {
 	{
 		return view('home');
 	}
+        
+        
+        public function getGraphData1(){
+            $client = new Client(['defaults' => [
+                'verify' => false
+            ]]);
+            $response = $client->get('http://smartlight/graphData1');
+           
+            return \Response::json(array('code' => 201, 'data' => $response->json()));
+        }
 
 }
