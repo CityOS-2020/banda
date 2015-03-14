@@ -32,26 +32,7 @@
          <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script> 
 	
 	<script>
-	$( document ).ready(function() {
-            setInterval(function(){ getdata() }, 3000);
-            var getdata = function(){
-                $.ajax({
-                method: "GET",
-                url: "{{ route('graphData1') }}"
-            })
-            .done(function( msg ) {
-                console.log(msg.data.data);  
-                $("#graph1").html("");
-                 $("#graph2").html("");
-                  $("#graph3").html("");
-                displayGraphExample("#graph1", 600, 100, "basis", true, 1000, 1000, msg.data.data);
-		displayGraphExample("#graph2", 150, 15, "basis", true, 1000, 1000, msg.data.data);
-		displayGraphExample("#graph3", 150, 15, "linear", true, 1000, 1000, msg.data.data);	
-               
-            });
-            }
-            
-        });
+	
 	function displayGraphExample(id, width, height, interpolation, animate, updateDelay, transitionDelay, dataD) {
 		// create an SVG element inside the #graph div that fills 100% of the div
 		var graph = d3.select(id).append("svg:svg").attr("width", "100%").attr("height", "100%");
