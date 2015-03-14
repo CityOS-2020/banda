@@ -1,0 +1,43 @@
+    .row {
+        padding: 20px 0px;
+    }
+
+    .contcustom {
+        text-align: center;
+        width: 300px;
+        border-radius: 0.5rem;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 10px auto;
+        padding: 20px;
+        background-color: white;
+    }
+
+    .header {
+        color: white;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 17px;
+        padding: 15px;
+        background-color: #ECF4F4;
+        border-radius: 2px;
+        border: none;
+    }
+
+    h1 {
+        padding: 0px;
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        font-weight: bold;
+        color: #ABABAB;
+    }
+    p {
+        margin-bottom: 10px;
+    }

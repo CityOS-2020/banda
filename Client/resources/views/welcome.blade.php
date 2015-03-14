@@ -1,46 +1,54 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+<head>
+    <meta charset="utf-8" />
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-				color: #B0BEC5;
-				display: table;
-				font-weight: 100;
-				font-family: 'Lato';
-			}
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
 
-			.container {
-				text-align: center;
-				display: table-cell;
-				vertical-align: middle;
-			}
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body background="imgs/b.jpg">
 
-			.content {
-				text-align: center;
-				display: inline-block;
-			}
+<div class="container">
 
-			.title {
-				font-size: 96px;
-				margin-bottom: 40px;
-			}
+<div class="header">
+    <h1 class = "text animated slideInDown">Welcome to OS</h1>
+    <hr/>
+</div>
+<form  action=""  method="POST">
 
-			.quote {
-				font-size: 24px;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="content">
-				<div class="title">Laravel 5</div>
-				<div class="quote">{{ Inspiring::quote() }}</div>
-			</div>
-		</div>
-	</body>
+<!-- Login - START -->
+<div class="container">
+    <div class="row colored">
+        <div class="contcustom">
+            <h2 class="text animated slideInDown">LogIn</h2>
+
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+      
+            </div>
+
+            <div class="input-group input-group-lg">
+                <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
+  
+            </div>
+
+            <button name="button" class="btn btn-default navbar-btn">Sign in</button>
+
+        </div>
+    </div>
+</div>
+</form>
+
+<!-- Login - END -->
+
+</div>
+
+</body>
 </html>
