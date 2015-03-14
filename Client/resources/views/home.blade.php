@@ -32,13 +32,32 @@
          <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script> 
 	
 	<script>
-	
+	$( document ).ready(function() {
+            setInterval(function(){ getdata() }, 3000);
+            var getdata = function(){
+                $.ajax({
+                method: "GET",
+                url: "{{ route('graphData1') }}"
+            })
+            .done(function( msg ) {
+                console.log(msg.data.data);  
+                $("#graph1").html("");
+                 $("#graph2").html("");
+                  $("#graph3").html("");
+                displayGraphExample("#graph1", 600, 100, "basis", true, 1000, 1000, msg.data.data);
+		displayGraphExample("#graph2", 150, 15, "basis", true, 1000, 1000, msg.data.data);
+		displayGraphExample("#graph3", 150, 15, "linear", true, 1000, 1000, msg.data.data);	
+               
+            });
+            }
+            
+        });
 	function displayGraphExample(id, width, height, interpolation, animate, updateDelay, transitionDelay, dataD) {
 		// create an SVG element inside the #graph div that fills 100% of the div
 		var graph = d3.select(id).append("svg:svg").attr("width", "100%").attr("height", "100%");
 
 		// create a simple data array that we'll plot with a line (this array represents only the Y values, X will just be the index location)
-		var data = dataD;// [2, 2, 1, 2, 3]; 
+		var data = dataD;// [2, 2, 1, 2, 3];
 
 		// X scale will fit values from 0-10 within pixels 0-100
 		var x = d3.scale.linear().domain([0, 48]).range([-5, width]); // starting point is -5 so the first value doesn't show and slides off the edge as part of the transition
