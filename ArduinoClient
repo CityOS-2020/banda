@@ -1,0 +1,133 @@
+/*
+  Web client
+
+ This sketch connects to a website (http://www.google.com)
+ using an Arduino Wiznet Ethernet shield.
+
+ Circuit:
+ * Ethernet shield attached to pins 10, 11, 12, 13
+
+ created 18 Dec 2009
+ by David A. Mellis
+ modified 9 Apr 2012
+ by Tom Igoe, based on work by Adrian McEwen
+
+ */
+
+#include <SPI.h>
+#include <Ethernet.h>
+
+
+// Enter a MAC address for your controller below.
+// Newer Ethernet shields have a MAC address printed on a sticker on the shield
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+// if you don't want to use DNS (and reduce your sketch size)
+// use the numeric IP instead of the name for the server:
+char server[] = "192.168.1.147";    // name address for Google (using DNS)
+
+// Set the static IP address to use if the DHCP fails to assign
+IPAddress ip(192, 168, 1, 147);
+
+
+// Initialize the Ethernet client library
+// with the IP address and port of the server
+// that you want to connect to (port 80 is default for HTTP):
+EthernetClient client;
+
+// @ Sead Banda
+int led = 9;           // the pin that the LED is attached to
+int brightness = 0;    // how bright the LED is
+int fadeAmount = 5;    // how many points to fade the LED by
+int analog = A0;
+int minimumValue = 0;
+int base;
+int threshold = 100;
+
+
+void setup() {
+  // Open serial communications and wait for port to open:
+  pinMode(led, OUTPUT);
+  pinMode(analog, INPUT_PULLUP);
+  base = analogRead(analog);
+  Serial.begin(9600);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for Leonardo only
+  }
+
+  // start the Ethernet connection:
+  if (Ethernet.begin(mac) == 0) {
+    Serial.println("Failed to configure Ethernet using DHCP");
+    // no point in carrying on, so do nothing forevermore:
+    // try to congifure using IP address instead of DHCP:
+    Ethernet.begin(mac, ip);
+  }
+  // give the Ethernet shield a second to initialize:
+  delay(1000);
+  Serial.println("connecting...");
+}
+
+void loop()
+{
+  int store  = analogRead(analog);
+  Serial.println(store);
+  fadeAmount = map(analogRead(analog), 1000, 0, 255, 0);
+  // @ Sead Banda
+  for(int i = 0; i < 10 ; i++)
+  {
+              int val = analogRead(analog);
+              Serial.print("Reading no ");
+              Serial.print(i+1);
+             // Serial.print("  =  ");
+              Serial.println(val);
+              minimumValue = minimumValue + val;
+   }
+   minimumValue = minimumValue / 10;
+   Serial.print("DONE! Then minimum value = ");
+   Serial.println(minimumValue);
+   
+   if ((base - store) > threshold) 
+   {
+    digitalWrite(led, HIGH); //write the i value to pin 11
+   } 
+   else if(minimumValue > threshold)
+   {
+    digitalWrite(led, LOW);
+   }
+  
+  // if there are incoming bytes available
+  // from the server, read them and print them:
+    // purposes only:
+  if (client.available()) {
+    char c = client.read();
+    Serial.print(c);
+  }
+  delay(2000);
+  int analogVal = store;
+  
+  httpRequest(analogVal);
+}
+
+
+
+// @ Admir Sabanovic
+void httpRequest(int val) {
+  String thisString = String(val);
+  // if there's a successful connection:
+  if (client.connect(server, 80)) {
+    Serial.println("connecting...");
+    client.println("GET /id/" + thisString + " HTTP/1.1");
+    client.println("Host: 192.168.1.147");
+    client.println("User-Agent: arduino-ethernet");
+    client.println("Connection: close");
+    client.println();
+
+    // note the time that the connection was made:
+    lastConnectionTime = millis();
+  }
+  else {
+    // if you couldn't make a connection:
+    Serial.println("connection failed");
+    Serial.println("disconnecting.");
+    client.stop();
+  }
+}
