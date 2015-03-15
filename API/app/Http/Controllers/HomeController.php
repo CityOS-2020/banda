@@ -23,4 +23,15 @@ class HomeController extends Controller {
         $graph1->save();
         \Log::info('saved: '.$val);
     }
+    
+    public function sendGraphDataApp(){
+         $db = Graph1::select('value')->take(1)->orderBy('id', 'DESC')->get();
+        
+        foreach ($db as $d){
+           $data[] =  $d->value;
+        }
+        
+        \Log::info('mob request');
+        return \Response::json(array('code' => 201, 'data' => $data));
+    }
 }

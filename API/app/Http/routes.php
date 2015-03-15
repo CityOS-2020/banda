@@ -23,6 +23,10 @@ Route::get('/graphData1', [
     'as' => 'graphData1', 'uses' => 'HomeController@sendGraphData1'
 ]);
 
+Route::post('/App', [
+    'as' => 'graphDataApp', 'uses' => 'HomeController@sendGraphDataApp'
+]);
+
 
 /*
  * login
