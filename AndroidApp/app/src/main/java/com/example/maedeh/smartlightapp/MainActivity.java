@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final Intent intent;
-        intent = new Intent(this, HomeActivity.class);
+        intent = new Intent(this, MenuActivity.class);
         Button btn = (Button)findViewById(R.id.btnLogin);
 
 
@@ -49,13 +49,13 @@ public class MainActivity extends Activity {
                 Thread thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
+                        //try {
                             mUsername=mUsernameView.getText().toString().trim();
                             mPassword=mPasswordView.getText().toString().trim();
-
+/*
                             JSONObject jsonobj = new JSONObject();
                             jsonobj.accumulate("username", mUsername);
-                            jsonobj.accumulate("pass",mPassword );
+                            jsonobj.accumulate("password",mPassword );
 
                             DefaultHttpClient httpclient = new DefaultHttpClient();
                             HttpPost httppostreq = new HttpPost("http://192.168.1.147/login");
@@ -79,11 +79,11 @@ public class MainActivity extends Activity {
                             JSONObject json = new JSONObject(responseText);
 
                             String logged = json.getString("logged");
-                            if (logged == "true"){
-                                startActivity(intent);
-                            }
-                            Log.v("msg", responseText);
-                        } catch (JSONException e) {
+                            //if (logged == "true"){
+  */                              startActivity(intent);
+                            //}
+                          //  Log.v("msg", responseText);
+                        /*} catch (JSONException e) {
                             e.printStackTrace();
                         } catch (UnsupportedEncodingException e) {
                             e.printStackTrace();
@@ -91,7 +91,7 @@ public class MainActivity extends Activity {
                             e.printStackTrace();
                         } catch (IOException e) {
                             e.printStackTrace();
-                        }
+                        }*/
 
                     }
                 });
