@@ -27,7 +27,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".MenuActivity"
+            android:label="@string/title_activity_menu" >
+        </activity>
+        <activity
+            android:name=".GraphTwo"
+            android:label="@string/title_activity_graph_two" >
+        </activity>
+        <activity
+            android:name=".GraphThree"
+            android:label="@string/title_activity_graph_three" >
+        </activity>
+        <activity
+            android:name=".activity_menu"
+            android:label="@string/title_activity_activity_menu" >
+        </activity>
     </application>
 
 </manifest>
