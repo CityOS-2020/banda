@@ -1,0 +1,45 @@
+html {
+	background-size: 100%;
+}
+
+body {
+	background-image: url("/ourBack.jpg");
+	background-position: center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	font-family: georgia;
+	text-align: center;
+	}
+
+div {
+   
+    margin-top: 8%;
+}
+
+b {
+	font-size: 30px;
+	color: white;
+	line-height: 150px;
+    color: transparent;
+    text-shadow: 0 0 1px rgba(0,0,0,0.8);
+
+}
+
+p {
+	color: white;
+	vertical-align: middle;
+	text-align: center;
+	width:800px; 
+	height:30px;
+	margin-left: 130px; 
+}
+
+label {
+	text-align: center;
+}
+
+path {
+	stroke: black;
+	stroke-width: 4;
+	fill: none;
+}
